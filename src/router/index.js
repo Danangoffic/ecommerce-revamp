@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 Vue.use(VueRouter)
-
+Vue.prototype.$apiURL = 'http://127.0.0.1:8000/api';
+Vue.prototype.$APP_TITLE = "Bali United Store Revamp";
 const routes = [
   {
     path: '/',
@@ -19,8 +20,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/product',
-    name: 'ProductDetail',
+    path: '/product/:slug',
+    props: true,
+    name: 'Product',
     component: () => import('../views/ProductDetail.vue')
   },
   {
@@ -33,6 +35,11 @@ const routes = [
     name: 'SuccessPayment',
     component: () => import('../views/SuccessPayment.vue')
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/user/LoginView.vue')
+  }
 ]
 
 const router = new VueRouter({

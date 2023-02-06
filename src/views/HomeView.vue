@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HeaderStore />
+    <HeaderStore @cart-changed="() => { this.cart = JSON.parse(localStorage.getItem('cart')) }" />
     <HeroStore />
     <ProductStore />
     <InstaListStore />
@@ -17,6 +17,7 @@ import ProductStore from "@/components/ProductStore.vue";
 import InstaListStore from "@/components/InstaListStore.vue";
 import PartnerStore from "@/components/PartnerStore.vue";
 import FooterStore from "@/components/FooterStore.vue";
+import axios from "axios";
 
 export default {
   name: "HomeView",
@@ -28,5 +29,31 @@ export default {
     PartnerStore,
     FooterStore,
   },
+  created() {
+    document.title = `${this.$APP_TITLE}`;
+    this.token = localStorage.getItem("token");
+    if (this.token) {
+      this.getUser();
+    }
+  },
+  data() {
+    return {
+      isAuth: false,
+      token: ''
+    }
+  },
+  methods: {
+    getUser() {
+      axios
+        .get(this.$apiURL + "/user", { headers: { 'Authorization': 'Bearer ' + this.token, 'Accept': 'application/json', 'Content-Type': "application/json" } })
+        .then((res) => {
+          if (res.status == 200) {
+            this.isAuth = true;
+          }
+          console.log(`is auth ${this.isAuth}`);
+        })
+        .catch((err) => console.log(err));
+    }
+  }
 };
 </script>

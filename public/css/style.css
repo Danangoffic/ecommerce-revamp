@@ -193,6 +193,12 @@ ol {
     color: #ffffff;
     background: #e7ab3c;
     text-transform: uppercase;
+    transition: ease-in-out;
+    transition-duration: .1s;
+}
+
+.primary-btn:hover{
+    background: #c0820e;
 }
 
 .site-btn {
@@ -504,7 +510,7 @@ ol {
 .inner-header .nav-right li {
     list-style: none;
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
     margin-left: 15px;
 }
 
@@ -533,6 +539,11 @@ ol {
     position: relative;
 }
 
+.cart-hover{
+    opacity: 0;
+    visibility: hidden;
+}
+
 .inner-header .nav-right li.cart-icon:hover .cart-hover {
     opacity: 1;
     visibility: visible;
@@ -542,7 +553,7 @@ ol {
 .inner-header .nav-right li.cart-icon a {
     color: #252525;
     position: relative;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .inner-header .nav-right li.cart-icon a span {
