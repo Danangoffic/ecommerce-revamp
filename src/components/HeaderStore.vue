@@ -77,8 +77,11 @@
               </li>
             </ul>
             <ul class="nav-right" v-else>
-              <li class="nav-item bg-transparent">
+              <li class="nav-item guest bg-transparent">
                 <router-link to="/login" style="color: #000 !important">Login</router-link>
+              </li>
+              <li class="nav-item guest bg-transparent">
+                <router-link to="/register" style="color: #000 !important">Register</router-link>
               </li>
             </ul>
           </div>
@@ -146,7 +149,7 @@ export default {
       }, 0);
     }
   },
-  created() {
+  mounted() {
 
     this.isLoggedIn = localStorage.getItem("isLoggedIn") ?? false;
     this.token = localStorage.getItem("token") ?? '';
