@@ -507,6 +507,18 @@ ol {
     padding: 10px 0;
 }
 
+/* .nav-item.guest{
+    
+} */
+.nav-item.guest>a:hover{
+    text-decoration: none;
+}
+.nav-item.guest:hover{
+    text-decoration: none;
+    border-bottom: 1px solid #666;
+    transition: border 0.3s ease-in-out;
+}
+
 .inner-header .nav-right li {
     list-style: none;
     display: inline-block;
